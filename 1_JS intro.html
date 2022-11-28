@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="1_JS intro.css">
+    <title>JS intro</title>
+</head>
+
+<body>
+    <h1>JS</h1>
+    <p>console.log()-gal lehet a visszatérési értéket kííratni</p>
+    <p>Button 1 has alert() added directly to the button selection with onclick.</p>
+    <button>Button 1</button>
+    <p>Button 2 has alert() added <b>within a function</b> to the button selection with onclick.</p>
+    <button>Button 2</button>
+    <h2>Be careful:</h2>
+    <p><span style="background: yellow;">function() {...}</span> gives a function definition, but <span
+            style="background: yellow;">function() {...}( )</span> calls the function.</p>
+    <p>Button 3: Its function is defined separately.</p>
+    <button>Button 3</button>
+    <p>Button 4's function has a parameter. It is embedded in an anonymus function to run properly.</p>
+    <button>Button 4</button>
+    <p>Button 5 is the same as button 4 but with querySelector. The <b>querySelectorAll</b> provides more oportunity
+        than
+        <b>getElementsByTagName</b>. querySelectorAll gives back a node list but getElementsByTagName gives back only an
+        HTML
+        collection. Check the difference in the console.
+    </p>
+    <p>querySelectorAll can accept every existing css selector. Eg.: querySelectorAll(".my-class:first-child") </p>
+    <button>Button 5</button>
+    <p><b>querySelector</b> gives back only one element. If there are more elements it gives back the first one.</p>
+    <p>Button with external script. Source reference is added <b>before the closing body tag</b>.</p>
+    <button>Button 6</button>
+    <p>Button with external script. Source reference is added in the <b>head</b>. In the js file <b>window.onload() =
+            function() {...}</b> is added to prevent too early running of certain parts of the script.</p>
+    <button>Button 7</button>
+
+    <script>
+        function showMessage() {
+            alert("Button 3 message");
+        }
+        function showMessage2(name) {
+            alert("Button 4 message: Hi, " + name + "!");
+        }
+        function showMessage3(name) {
+            alert("Button 5 message: Hi, " + name + "!");
+        }
+        document.getElementsByTagName('button')[0].onclick = alert("button 1 message");
+        document.getElementsByTagName('button')[1].onclick = function () {
+            alert("button 2 message");
+        }
+        document.getElementsByTagName('button')[2].onclick = showMessage;
+        document.getElementsByTagName('button')[3].onclick = function () {
+            showMessage2("Mr Smith");
+        };
+        document.querySelectorAll('button')[4].onclick = function () {
+            showMessage3("Mr X");
+        };
+
+        console.log(document.getElementsByTagName('button'));
+        console.log(document.querySelectorAll('button'));
+    </script>
+    <script src="1_JS intro.js"></script>
+</body>
+
+</html>
