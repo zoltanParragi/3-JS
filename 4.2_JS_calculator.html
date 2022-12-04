@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        #log {
+            width: 300px;
+            margin: 30px auto;
+            padding: 20px;
+            font-size: 140%;
+            border: 1px solid gray;
+        }
+
+        #log>div {
+            font-size: 250%;
+            text-align: center;
+        }
+
+        #logBase {
+            font-size: 40%;
+            width: 20px;
+        }
+
+        #logArg {
+            font-size: 60%;
+            width: 100px;
+        }
+
+        #logResult {
+            width: 80%;
+            min-height: 70px;
+            margin: 10px auto;
+            border: 1px solid grey;
+        }
+
+        #log>div>button {
+            font-size: 40%;
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="log">
+        <h2>Logaritmus számoló</h2>
+        <div><span>log</span><sub><input type="text" id="logBase"></sub> <input type="text" id="logArg">
+            <span>=</span>
+            <div id="logResult"></div>
+        </div>
+        <div><button>SZÁMOL</button></div>
+    </div>
+    <script src="4.2_JS.js"></script>
+
+</body>
+
+</html>
