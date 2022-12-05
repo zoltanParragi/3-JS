@@ -7,3 +7,5 @@ function calculateLogarithm() {
 }
 
 document.querySelector('body > div#log > div > button').onclick = () => { calculateLogarithm() };
+
+console.log(...Array(10).keys())
