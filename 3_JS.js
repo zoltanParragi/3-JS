@@ -1,21 +1,40 @@
 // if, else, else if
 
 //switch
-
-let a = 3;
+console.log("Be careful with  switch. Here are two usage.")
+console.log("switch 1:");
+let a = 4;
 
 switch (a) {
-    case a < 10:
-        console.log("a kisebb mint 10");
+    case 3:
+        console.log("a === 3");
         break;
-    case a < 20:
-        console.log("a kisebb mint 20");
+    case 4:
+        console.log("a === 4");
         break;
-    case a < 30:
-        console.log("a kisebb mint 30");
+    case 5:
+        console.log("a === 5");
         break;
     default:
-        console.log("a nagyobb vagyegyenlő mint 30")
+        console.log("a nem 3 vagy 4 vagy 5")
+}
+
+
+console.log("switch 2:");
+let b = 15;
+
+switch (true) {
+    case b < 10:
+        console.log("b kisebb mint 10");
+        break;
+    case b < 20:
+        console.log("b kisebb mint 20");
+        break;
+    case b < 30:
+        console.log("b kisebb mint 30");
+        break;
+    default:
+        console.log("b nagyobb vagyegyenlő mint 30")
 }
 
 let arr = ["element1", "element2", "element3", "element4",]
