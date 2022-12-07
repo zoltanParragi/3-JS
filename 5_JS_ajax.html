@@ -20,10 +20,34 @@
 
         body>div:nth-child(2)>div {
             width: 90%;
+            height: 300px;
+            overflow: scroll;
             margin: 20px auto;
             padding: 10px;
             border: 1px solid grey;
 
+        }
+
+        body>div:nth-child(3)>div {
+            width: 90%;
+            height: 300px;
+            overflow: scroll;
+            margin: 20px auto;
+            padding: 10px;
+            border: 1px solid grey;
+
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid;
+        }
+
+        table {
+            width: 80%;
+            margin: 10px auto;
+            border-collapse: collapse;
         }
     </style>
 </head>
@@ -34,7 +58,11 @@
         <div id="display-time"><button id="time-btn">Start showing time</button> </div>
     </div>
     <div>
-        <h2>Get JSON and show it with AJAX</h2>
+        <h2>AJAX: get JSON and show it (posts)</h2>
+        <div></div>
+    </div>
+    <div>
+        <h2>AJAX: to do lidst</h2>
         <div></div>
     </div>
     <script src="5_JS.js"></script>
