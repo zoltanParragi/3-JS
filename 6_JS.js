@@ -25,11 +25,11 @@ document.forms[0].onsubmit = (e) => {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(data) //The JSON.stringify() method converts a JavaScript value to a JSON string. Data can be sent to a server in the format of JSON string only.
+        body: JSON.stringify(data) //The JSON.stringify() method converts a JavaScript value to a JSON string. Data can be sent to a server in the format of JSON string only.  https://www.w3schools.com/js/js_json_stringify.asp
     }
     fetch('6_JS.php', config)
-        .then(res => res.json()) // ??????????
-        .then(res => { // itt a res tömb vagy obj? A php-ből asszociatív tömb küldődik.
+        .then(res => res.json()) //res.json() helyén: response object, res.json() ezt adja vissza: fulfilled Promise, 
+        .then(res => {  //itt jelenik meg BE-ből jövő obj/tömb eredeti formában a => után
             document.querySelectorAll(".error-message").forEach(e => {
                 e.innerText = ""
             })
