@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
+        integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!--https://cdnjs.com/libraries/jquery-->
+    <title>jQuery Ajax</title>
+</head>
+
+<body>
+    <div id="one">
+        <h2>Part 1</h2>
+        <div></div>
+        <button>ajax</button>
+    </div>
+    <div id="two">
+        <h2>Part 2</h2>
+        <div></div>
+        <div></div>
+        <button>ajax</button>
+    </div>
+    <div id="three">
+        <h2>Part 3</h2>
+        <div></div>
+        <div></div>
+        <button>Home</button>
+    </div>
+    <div id="four">
+        <h2>Part 4</h2>
+        <div></div>
+        <div></div>
+        <button data-hash="#home">Home</button>
+        <button data-hash="#about">About</button>
+        <button data-hash="#contact">Contact</button>
+    </div>
+    <div id="five">
+        <h2>Part 5, ajax with native js</h2>
+        <div></div>
+        <div></div>
+        <button data-hash="#home">Home</button>
+        <button data-hash="#about">About</button>
+        <button data-hash="#contact">Contact</button>
+    </div>
+    <div id="six">
+        <h2>Part 6, ajax with .get</h2>
+        <div></div>
+        <div></div>
+        <button data-hash="#home">Home</button>
+        <button data-hash="#about">About</button>
+        <button data-hash="#contact">Contact</button>
+    </div>
+    <div id="seven">
+        <h2>Part 7, ajax with .post</h2>
+        <div></div>
+        <div></div>
+        <button data-hash="#home">Home</button>
+        <button data-hash="#about">About</button>
+        <button data-hash="#contact">Contact</button>
+    </div>
+    <div id="eight">
+        <h2>Part 8, ajax, .post, json</h2>
+        <div></div>
+        <div></div>
+        <button>Ajax - do it</button>
+    </div>
+    <div id="nine">
+        <h2>Part 9, ajax, .post, json, version 2</h2>
+        <div></div>
+        <div></div>
+        <button>Ajax - do it</button>
+    </div>
+    <script>
+        $('#one>button').on({
+            click: function () {
+                $('#one>div').text('loading...')
+                debugger
+                $('#one>div').load('8_3_kiszolgalo.php')
+            }
+        })
+        $('#two>button').on({
+            click: function () {
+                $('#two>div:nth-child(2)').text('loading...')
+                debugger
+                $('#two>div:nth-child(3)').load('8_3_kiszolgalo.php', function () {
+                    $('#two>div:nth-child(2)').fadeOut(1000)
+                })
+            }
+        })
+        $('#three>button').on({
+            click: function () {
+                $('#three>div:nth-child(2)').text('loading...')
+                $('#three>div:nth-child(3)').load('8_3_kiszolgalo2.php #home', function () {
+                    $('#three>div:nth-child(2)').fadeOut(1000)
+                })
+            }
+        })
+        $('#four>button').on({
+            click: function () {
+                const data = $(this).data('hash') // vagy .attr(data-hash) bármilyen atributum kresése esetén
+                $('#four>div:nth-child(2)').fadeIn()
+                $('#four>div:nth-child(2)').text('loading...')//     v space here is a must!!!!!!!!
+                $('#four>div:nth-child(3)').load('8_3_kiszolgalo2.php ' + data, function () {
+                    $('#four>div:nth-child(2)').fadeOut(1000)
+                })
+            }
+        })
+        // ajax with native js:
+        document.querySelectorAll('#five>button').forEach((btn) => {
+            btn.onclick = () => {
+                const xhr = new XMLHttpRequest;
+                xhr.responseType = 'document';
+                const data = btn.getAttribute('data-hash'); // would be better with id
+                xhr.onload = function () {
+                    const doc = xhr.response
+                    const content = doc.getElementById(data.slice(1)).innerHTML
+                    document.querySelector('#five>div:nth-child(3)').innerHTML = content
+                }
+                xhr.open('GET', '8_3_kiszolgalo2.php');
+                xhr.send();
+            }
+        })
+        //part six - ajax with .get 
+        $.get('8_3_kiszolgalo2.php', function (data, status, xhr) {
+            $('#six>div:nth-child(3)').html(data)
+            console.log(status)
+            console.log(xhr)
+        })
+        //part seven - ajax with .post
+        $.post('8_3_kiszolgalo3.php',
+            {
+                name: 'mrx',
+                email: 'as@as.as'
+
+            }, function (data, status, xhr) {
+                $('#seven>div:nth-child(3)').html(data)
+                console.log(status)
+                console.log(xhr)
+            })
+
+        $('#nine>button').on({
+            click: function () {
+                $.post('8_3_kiszolgalo5.php',
+                    {
+                        valami: 'valami 2'
+                    },
+                    function (data, status, xhr) {
+                        //const obj = JSON.parse(data) We don't need this, because php provides a json. Php can provide anything (json, text, html, css, ...), it is defined in the content of the header. 
+                        document.querySelector('#nine>div:nth-child(3)').innerHTML = data
+                        //consoloe.log(data)
+                    })
+            }
+        })
+    </script>
+</body>
+
+</html>

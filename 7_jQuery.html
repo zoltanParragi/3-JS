@@ -17,6 +17,7 @@
     <div></div>
     <div></div>
     <section></section>
+    <article></article>
     <script>
         $('h1').css('color', 'purple')
         $('div')
@@ -37,6 +38,22 @@
             })
             .fadeTo(1000, 0.4)
             .fadeTo(1000, 1)
+        $('article')
+            .css({
+                width: '100px',
+                height: '100px',
+                backgroundColor: 'purple',
+                position: 'absolute',
+                right: '10px',
+                top: '10px',
+                transform: 'rotate(20deg)'
+            })
+            .animate({
+                top: '50%',
+                right: '50%',
+                height: '+=50px',
+                width: '+=50px'
+            }, 2000)
     </script>
 </body>
 

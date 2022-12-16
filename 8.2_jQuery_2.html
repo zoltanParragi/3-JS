@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
+        integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!--https://cdnjs.com/libraries/jquery-->
+    <title>jQuery 2</title>
+    <style>
+        .yellowBg {
+            background: yellow;
+        }
+
+        .colorRed {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>jQuery 2, part 2</h1>
+    <div>
+        <h2>title</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus facere deserunt nostrum numquam, ea aperiam?
+            <span>Dolorem e<b>xpedita facere</b> corporis quis</span> consectetur recusandae placeat, accusamus ullam
+            beatae. Accusamus quo vel asperiores?
+        </p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+        <p>Lorem ipsum, <span>dolor sit amet consectetur</span> adipisicing elit. Cum, repellat neque magnam explicabo
+            ratione
+            beatae <span>aut id dolor ducimus!</span> Non atque consectetur numquam deleniti aspernatur
+            <span>exercitationem saepe animi</span>
+            magnam distinctio?
+        </p>
+    </div>
+    <div>
+        <h2>title</h2>
+        <p>Lorem ipsum, <span>dolor sit amet consectetur</span> adipisicing elit. Cum, repellat neque magnam explicabo
+            ratione
+            beatae <span>aut id dolor ducimus!</span> Non atque consectetur numquam deleniti aspernatur
+            <span>exercitationem saepe animi</span>
+            magnam distinctio?
+        </p>
+    </div>
+    <button>Click</button>
+    <script>
+        $('button').on({
+            click: function () {
+                $('body > div:nth-child(2) > p:nth-child(2) > span > b').addClass('yellowBg')
+                $('body > div:nth-child(2) > p:nth-child(2) > span').toggleClass('colorRed')
+                $('span').parents('p').css({ border: '1px solid brown' })
+                $('div').children('h2').css({ color: 'green' })
+                $('p').siblings('h2').css({ textDecoration: 'underline' })
+            }
+        })
+    </script>
+</body>
+
+</html>
