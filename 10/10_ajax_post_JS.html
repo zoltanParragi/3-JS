@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax, post, JS</title>
+    <!-- 
+        TO RUN SERVER IN THIS FOLDER
+
+        in terminal:
+        navigate to this folder: C:\AppServ\www\full-stack-course\3 JS\10>
+
+        in the terminal:
+        php -S localhost:5000 (port can be 5000, 3000, 8000, ... but not 80. 80 is for php something)
+
+        in the browser:
+        http://localhost:5000/10_kiszolgalo.php
+    -->
+</head>
+
+<body>
+    <h1>Ajax, post, JS</h1>
+    <div></div>
+    <button>Click 1</button>
+    <button>Click 2</button>
+
+    <script>
+        document.querySelector('button:nth-child(3)').onclick = function () {
+            const xhr = new XMLHttpRequest
+            xhr.onload = function () {
+                document.querySelector('div').innerText = xhr.response
+            }
+            xhr.open('POST', '10_kiszolgalo.php')
+            xhr.setRequestHeader('Content-Type', 'application/json') // defines the type of data it requests from the server, 'application/x-www-from-urlencoded' -> data in url format eg.: 'name=mrxxx&email=asd@asd.asd'
+            xhr.send(JSON.stringify({ //converts the object to JSON
+                name: 'mry',
+                email: 'qwe@qwe.qwe'
+            }))
+        }
+        document.querySelector('button:nth-child(4)').onclick = function () {
+            const xhr = new XMLHttpRequest
+
+            //Here you can see readyState 1, 2, 3, 4 in the console.
+            //If you put this block (onreadystatechange) after xhr.send(...) only readyState 2, 3, 4 can be seen. 
+            // => So this place is more appropriate for the onreadystatechange OR onload block.
+            xhr.onreadystatechange = function () {
+                console.log(xhr.readyState)
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    document.querySelector('div').innerText = xhr.response
+                } else {
+                    document.querySelector('div').innerText = "loading ..."
+                }
+            }
+
+            xhr.open('POST', '10_kiszolgalo.php')
+            xhr.setRequestHeader('Content-Type', 'application/json') // defines the type of data it requests from the server, 'application/x-www-from-urlencoded' -> data in url format eg.: 'name=mrxxx&email=asd@asd.asd'
+            xhr.send(JSON.stringify({ //converts the object to JSON
+                name: 'mrsPoppins',
+                email: 'poppins@poppins.poppins'
+            }))
+        }
+    </script>
+</body>
+
+</html>
